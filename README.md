@@ -1,5 +1,5 @@
-# COURSENAME
-This is the repository for the LinkedIn Learning course [COURSENAME]. The full course is available from [LinkedIn Learning](LICOURSEURL).
+# Improving Performance with IndexedDB and Caching
+This is the repository for the LinkedIn Learning course Improving Performance with IndexedDB and Caching. The full course is available from [LinkedIn Learning](LICOURSEURL).
 
 [![COURSENAME](COURSEIMAGE)](LICOURSEURL)
 
