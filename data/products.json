@@ -1,0 +1,152 @@
+{
+  "products": [
+    {
+      "title": "It’s All 0’s and 1’s to Me! Apron",
+      "price": 24.00,
+      "image": "https://binaryville.com/images/products/fred-0s1s-apron-black.jpg",
+      "cat": 1,
+      "char": 1
+    },
+    {
+      "title": "I Compute, Therefore I Am Apron",
+      "price": 24.00,
+      "image": "https://binaryville.com/images/products/dolores-compute-apron-black.jpg",
+      "cat": 1,
+      "char": 3
+    },
+    {
+      "title": "A Gumball for Your Thoughts Apron",
+      "price": 24.00,
+      "image": "https://binaryville.com/images/products/bubbles-gumball-apron-black.jpg",
+      "cat": 1,
+      "char": 2
+    },
+    {
+      "title": "Great Microcontrollers Think Alike Apron",
+      "price": 24.00,
+      "image": "https://binaryville.com/images/products/rex-microcontrollers-apron-black.jpg",
+      "cat": 1,
+      "char": 4
+    },
+    {
+      "title": "It’s All 0’s and 1’s to Me! Baseball Hat",
+      "price": 29.00,
+      "image": "https://binaryville.com/images/products/fred-0s1s-baseballhat-black.jpg",
+      "cat": 2,
+      "char": 1
+    },
+    {
+      "title": "I Compute, Therefore I Am Baseball Hat",
+      "price": 29.00,
+      "image": "https://binaryville.com/images/products/dolores-compute-baseballhat-black.jpg",
+      "cat": 2,
+      "char": 3
+    },
+    {
+      "title": "A Gumball for Your Thoughts Baseball Hat",
+      "price": 29.00,
+      "image": "https://binaryville.com/images/products/bubbles-gumball-baseballhat-black.jpg",
+      "cat": 2,
+      "char": 2
+    },
+    {
+      "title": "Great Microcontrollers Think Alike Baseball Hat",
+      "price": 29.00,
+      "image": "https://binaryville.com/images/products/rex-microcontrollers-baseballhat-black.jpg",
+      "cat": 2,
+      "char": 4
+    },
+    {
+      "title": "It’s All 0’s and 1’s to Me! Mug",
+      "price": 16.00,
+      "image": "https://binaryville.com/images/products/fred-0s1s-mug-black.jpg",
+      "cat": 3,
+      "char": 1
+    },
+    {
+      "title": "I Compute, Therefore I Am Mug",
+      "price": 16.00,
+      "image": "https://binaryville.com/images/products/dolores-compute-mug-black.jpg",
+      "cat": 3,
+      "char": 3
+    },
+    {
+      "title": "A Gumball for Your Thoughts Mug",
+      "price": 16.00,
+      "image": "https://binaryville.com/images/products/bubbles-gumball-mug-black.jpg",
+      "cat": 3,
+      "char": 2
+    },
+    {
+      "title": "Great Microcontrollers Think Alike Mug",
+      "price": 16.00,
+      "image": "https://binaryville.com/images/products/rex-microcontrollers-mug-black.jpg",
+      "cat": 3,
+      "char": 4
+    },
+    {
+      "title": "It’s All 0’s and 1’s to Me! T-shirt",
+      "price": 26.00,
+      "image": "https://binaryville.com/images/products/fred-0s1s-tshirt-black.jpg",
+      "cat": 4,
+      "char": 1
+    },
+    {
+      "title": "I Compute, Therefore I Am T-shirt",
+      "price": 26.00,
+      "image": "https://binaryville.com/images/products/dolores-compute-tshirt-black.jpg",
+      "cat": 4,
+      "char": 3
+    },
+    {
+      "title": "A Gumball for Your Thoughts T-shirt",
+      "price": 26.00,
+      "image": "https://binaryville.com/images/products/bubbles-gumball-tshirt-black.jpg",
+      "cat": 4,
+      "char": 2
+    },
+    {
+      "title": "Great Microcontrollers Think Alike T-shirt",
+      "price": 26.00,
+      "image": "https://binaryville.com/images/products/rex-microcontrollers-tshirt-black.jpg",
+      "cat": 4,
+      "char": 4
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Aprons"
+    },
+    {
+      "id": 2,
+      "name": "Baseball Hats"
+    },
+    {
+      "id": 3,
+      "name": "Mugs"
+    },
+    {
+      "id": 4,
+      "name": "T-shirts"
+    }
+  ],
+  "characters": [
+    {
+      "id": 1,
+      "name": "Fred"
+    },
+    {
+      "id": 2,
+      "name": "Bubbles"
+    },
+    {
+      "id": 3,
+      "name": "Dolores"
+    },
+    {
+      "id": 4,
+      "name": "Rex"
+    }
+  ]
+}
