@@ -1,7 +1,14 @@
+const cacheVersion = '0'
+
 const currentCaches = {
-    css: 'CSS',
-    imgs: 'images'
+    css: 'CSS-' + cacheVersion + '.1',
+    imgs: 'images-' + cacheVersion + '.1'
 }
+
+const cachesToDelete = [
+    'CSS',
+    'images'
+]
 
 const cacheFiles = {
     css: [
@@ -42,7 +49,10 @@ self.addEventListener("install", event => {
                 caches.open(currentCaches.imgs)
                     .then(cache => {
                         return cache.addAll(cacheFiles.imgs)
-                    })
+                    }),
+                ...cachesToDelete.map(cache => {
+                    return caches.delete(cache)
+                })
             ]
         )
     )
