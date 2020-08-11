@@ -48,3 +48,19 @@ self.addEventListener("install", event => {
     )
 
 })
+
+self.addEventListener("fetch", function (event) {
+    if ([...cacheFiles.css, ...cacheFiles.imgs].includes(event.request.url)) {
+        event.respondWith(
+            caches.match(event.request)
+                .then(function (response) {
+                    if (response) {
+                        console.log('returning file from cache')
+                        return response
+                    } else {
+                        return fetch(event.request)
+                    }
+                })
+        )
+    }
+})
