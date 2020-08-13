@@ -59,6 +59,11 @@ const categoryStore = localforage.createInstance({
     storeName: 'categories'
 })
 
+const storeInvalidation = localforage.createInstance({
+    name: dbName,
+    storeName: 'storeInvalidation'
+})
+
 self.addEventListener("install", event => {
 
     event.waitUntil(
@@ -105,36 +110,56 @@ self.addEventListener("fetch", function (event) {
 
             let data = {products: [], categories: [], characters: []}
 
-            await productStore.iterate(value => {data.products.push(value)})
-            await categoryStore.iterate(value => {data.categories.push(value)})
-            await characterStore.iterate(value => {data.characters.push(value)})
+            const now = Date.now()
+            const timeOut = 1800000
+            const expiryTime = now - timeOut
+
+            const prodFetchTime = await storeInvalidation.getItem('productStore')
+            const charFetchTime = await storeInvalidation.getItem('characterStore')
+            const catFetchTime = await storeInvalidation.getItem('categoryStore')
 
             if (
-                data.products.length > 0 &&
-                data.categories.length > 0 &&
-                data.characters.length > 0
+                expiryTime < prodFetchTime &&
+                expiryTime < charFetchTime &&
+                expiryTime < catFetchTime
             ) {
-                return new Response(JSON.stringify(data), {
-                    header: { "Content-Type": "application/json" }
-                })
+                await productStore.iterate(value => {data.products.push(value)})
+                await categoryStore.iterate(value => {data.categories.push(value)})
+                await characterStore.iterate(value => {data.characters.push(value)})
+
+                if (
+                    data.products.length > 0 &&
+                    data.categories.length > 0 &&
+                    data.characters.length > 0
+                ) {
+                    return new Response(JSON.stringify(data), {
+                        header: { "Content-Type": "application/json" }
+                    })
+                }
             }
 
             const response = await fetch(event.request)
             data = await response.clone().json()
 
             if (data.products.length > 0) {
+                productStore.clear()
+                storeInvalidation.setItem('productStore', now)
                 data.products.forEach((product, key) => {
                     productStore.setItem(String(key), product);
                 })
             }
 
             if (data.characters.length > 0) {
+                characterStore.clear()
+                storeInvalidation.setItem('characterStore', now)
                 data.characters.forEach((product, key) => {
                     characterStore.setItem(String(key), product);
                 })
             }
 
             if (data.categories.length > 0) {
+                categoryStore.clear()
+                storeInvalidation.setItem('categoryStore', now)
                 data.categories.forEach((product, key) => {
                     categoryStore.setItem(String(key), product);
                 })
