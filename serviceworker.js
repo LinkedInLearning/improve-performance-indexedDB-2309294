@@ -102,8 +102,25 @@ self.addEventListener("fetch", function (event) {
 
     if (event.request.url.includes('data/products.json')) {
         event.respondWith(async function(){
+
+            let data = {products: [], categories: [], characters: []}
+
+            await productStore.iterate(value => {data.products.push(value)})
+            await categoryStore.iterate(value => {data.categories.push(value)})
+            await characterStore.iterate(value => {data.characters.push(value)})
+
+            if (
+                data.products.length > 0 &&
+                data.categories.length > 0 &&
+                data.characters.length > 0
+            ) {
+                return new Response(JSON.stringify(data), {
+                    header: { "Content-Type": "application/json" }
+                })
+            }
+
             const response = await fetch(event.request)
-            let data = await response.clone().json()
+            data = await response.clone().json()
 
             if (data.products.length > 0) {
                 data.products.forEach((product, key) => {
