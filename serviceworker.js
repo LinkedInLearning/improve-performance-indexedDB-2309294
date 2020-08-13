@@ -41,6 +41,24 @@ const cacheFiles = {
     ]
 }
 
+importScripts('js/localforage.min.js')
+
+const dbName = 'store'
+const productStore = localforage.createInstance({
+    name: dbName,
+    storeName: 'products'
+})
+
+const characterStore = localforage.createInstance({
+    name: dbName,
+    storeName: 'characters'
+})
+
+const categoryStore = localforage.createInstance({
+    name: dbName,
+    storeName: 'categories'
+})
+
 self.addEventListener("install", event => {
 
     event.waitUntil(
@@ -81,4 +99,33 @@ self.addEventListener("fetch", function (event) {
                 })
         )
     }
+
+    if (event.request.url.includes('data/products.json')) {
+        event.respondWith(async function(){
+            const response = await fetch(event.request)
+            let data = await response.clone().json()
+
+            if (data.products.length > 0) {
+                data.products.forEach((product, key) => {
+                    productStore.setItem(String(key), product);
+                })
+            }
+
+            if (data.characters.length > 0) {
+                data.characters.forEach((product, key) => {
+                    characterStore.setItem(String(key), product);
+                })
+            }
+
+            if (data.categories.length > 0) {
+                data.categories.forEach((product, key) => {
+                    categoryStore.setItem(String(key), product);
+                })
+            }
+
+            return response
+
+        }())
+    }
+
 })
